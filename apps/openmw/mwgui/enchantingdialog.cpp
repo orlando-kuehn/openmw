@@ -369,6 +369,26 @@ namespace MWGui
             MWBase::Environment::get().getWindowManager()->messageBox ("#{sNotifyMessage34}");
         }
 
-        MWBase::Environment::get().getWindowManager()->removeGuiMode (GM_Enchanting);
+        updateItemBox();
+        updateSoulBox();
+
+    }
+
+    // If the stack of items is empty removes the item from the item box
+    void EnchantingDialog::updateItemBox() {
+        MWWorld::Ptr oldItem = mEnchanting.getOldItem();
+        if(oldItem.getRefData().getCount() == 0)
+        {
+            setItem(MWWorld::Ptr());
+        }
+    }
+
+    // If the stack of soulgems is empty removes the soulgem from the soulgem box
+    void EnchantingDialog::updateSoulBox() {
+        MWWorld::Ptr soulGem = mEnchanting.getGem();
+        if(soulGem.getRefData().getCount() == 0)
+        {
+            setSoulGem(MWWorld::Ptr());
+        }
     }
 }

@@ -71,6 +71,10 @@ namespace MWGui
 
         MWMechanics::Enchanting mEnchanting;
         ESM::EffectList mEffectList;
+
+        void updateItemBox();
+
+        void updateSoulBox();
     };
 
 }
